@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 #----------------------------------------------
-set(CMAKE_INSTALL_PREFIX CACHE PATH "D:\\trash" FORCE)
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 
 #----------------------------------------------
 # Check if environment variable QTDIR is set.
@@ -18,24 +17,21 @@ endif ()
 #----------------------------------------------
 project(tests)
 
-include_directories("${tests_SOURCE_DIR}/../include")
-
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Test REQUIRED)
 
-set(TEMP_SOURCES
-		../src/QHttpMessage.cpp ../src/QHttpRequest.cpp ../src/QHttpResponse.cpp
-		../src/QHttpObjectDecoder.cpp ../src/QHttpRequestDecoder.cpp)
+include_directories("${tests_SOURCE_DIR}/../include")
 
 #----------------------------------------------
-#add_executable(test test.cpp)
-#qt5_use_modules(test Core Test Network)
+set(STREAM_FILES
+	../src/QStream.h
+	../src/QStreamHandler.h
+	../src/QStreamDecoder.h
+	../src/QStreamEncoder.h)
 
-#add_test(test test)
+source_group("Stream" FILES ${STREAM_FILES})
 
 #----------------------------------------------
-add_executable(test_http ${TEMP_SOURCES} test_http.cpp)
-qt5_use_modules(test_http Core Test Network)
+add_executable(colorize colorize.cpp)
 
-add_test(tests test_http)
