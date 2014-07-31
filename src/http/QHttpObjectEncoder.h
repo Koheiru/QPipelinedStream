@@ -19,7 +19,7 @@ public:
 	virtual ~QHttpObjectEncoder();
 
 public:
-	void encode(QIODevice& input, QList<QHttpObject*>& output) override;
+	void encode(QHttpObject* input, QIODevice& output) override;
 	void reset() override;
 
 protected:

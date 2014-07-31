@@ -30,7 +30,7 @@ QHttpObjectEncoder::~QHttpObjectEncoder()
 {
 }
 
-void QHttpObjectEncoder::encode(QIODevice& input, QList<QHttpObject*>& output)
+void encode(QHttpObject* input, QIODevice& output)
 {
 	Q_ASSERT(!"Not supported yet");
 }
